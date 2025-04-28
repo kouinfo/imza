@@ -1,0 +1,21 @@
+gercekButon.addEventListener('click', function() {
+    if (Notification.permission === 'granted') {
+        new Notification('Hediyen Burada!', {
+            body: 'Şaka şaka, nah kazandın! 😂',
+            icon: 'https://sicanzi.com/images/nah.png'
+        });
+    } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+            if (permission === 'granted') {
+                new Notification('Hediyen Burada!', {
+                    body: 'Şaka şaka, nah kazandın! 😂',
+                    icon: 'https://sicanzi.com/images/nah.png'
+                });
+            } else {
+                alert('Bildirim izni vermedin ama yine de nah kazandın! 😎');
+            }
+        });
+    } else {
+        alert('Bildirim izni engellendi! Şakayı tam yaşayamadın 😢');
+    }
+});
